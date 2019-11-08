@@ -31,7 +31,9 @@ create table employee
     phone_number  VARCHAR(30) not null,
     email         TEXT        not null,
     date_hired    DATE default current_timestamp not null,
-    employee_type int
+    employee_type TEXT        not null
+--         check to be sure that the employee
+     CHECK ( employee_type = "hourly" or  employee_type = "salaried")
 );
 
 create unique index employee_employee_ID_uindex
