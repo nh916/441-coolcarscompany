@@ -61,4 +61,15 @@ create unique index mechanic_mechanic_ID_uindex
 
 
 
+-- create invoice table
+create table invoice
+(
+    invoice_id INTEGER not null
+        constraint invoice_pk
+            primary key autoincrement,
+    date       DATE default CURRENT_TIMESTAMP not null,
+    order_id   int     not null
+);
 
+create unique index invoice_invoice_id_uindex
+    on invoice (invoice_id);
