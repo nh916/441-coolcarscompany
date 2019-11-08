@@ -80,6 +80,7 @@ create unique index invoice_invoice_id_uindex
 -- creation of domestic customer table with inheritance
 create table domestic_customer
 (
-	regional_code int not null,
-    domestic_customer_id INTEGER PRIMARY KEY REFERENCES customer (customer_id)
+    domestic_customer_id INTEGER PRIMARY KEY REFERENCES customer (customer_id),
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+	regional_code int not null
 );
