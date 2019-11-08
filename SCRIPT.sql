@@ -19,6 +19,7 @@ create unique index customer_customer_id_uindex
 
 
 
+
 -- create employee table
 create table employee
 (
