@@ -10,7 +10,8 @@ create table customer
     city          TEXT        not null,
     state         TEXT        not null,
     zip_code      VARCHAR(20) not null,
-    customer_type int         not null
+    customer_type TEXT         not null
+     CHECK ( customer_type = "international" or  customer_type = "domestic")
 );
 
 create unique index customer_customer_id_uindex
