@@ -4,7 +4,7 @@ create table customer
     customer_id   INTEGER     not null
         constraint customer_pk
             primary key autoincrement,
-    customer_name TEXT        not null,
+    name TEXT        not null,
     phone_number  VARCHAR(30) not null,
     street        TEXT        not null,
     city          TEXT        not null,
