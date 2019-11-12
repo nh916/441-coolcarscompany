@@ -81,6 +81,26 @@ create unique index invoice_invoice_id_uindex
 create table domestic_customer
 (
     domestic_customer_id INTEGER PRIMARY KEY REFERENCES customer (customer_id),
-    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-	regional_code int not null
+    regional_code int not null,
+    FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
 );
+
+
+
+
+
+
+-- trying again
+create table domestic_customer
+(
+    regional_code        int     not null,
+    domestic_customer_id INTEGER not null
+        constraint domestic_customer_pk
+            primary key autoincrement
+        references customer
+            on update cascade on delete cascade
+);
+
+create unique index domestic_customer_domestic_customer_id_uindex
+    on domestic_customer (domestic_customer_id);
+
