@@ -1,2 +1,2 @@
 INSERT INTO employee (name, phone_number, email, date_hired, employee_type)
-VALUES ("navid", 8186725432, "gmail@gmail.com", "7/10/1993", "hourly");
+VALUES ("Joe", 8125462222, "gmail@gmail.com", "7/10/1993", "hourly");

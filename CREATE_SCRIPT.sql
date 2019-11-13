@@ -82,10 +82,10 @@ create table domestic_customer
 (
     domestic_customer_id INTEGER PRIMARY KEY,
     regional_code int not null,
-    FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
+--     FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
 
---     CONSTRAINT domestic_customer_id FOREIGN KEY (domestic_customer_id)
---     REFERENCES customer(customer_id)
+    CONSTRAINT domestic_customer_id FOREIGN KEY (domestic_customer_id)
+    REFERENCES customer(customer_id)
 );
 
 
