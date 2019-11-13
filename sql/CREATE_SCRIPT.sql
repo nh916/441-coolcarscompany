@@ -141,6 +141,40 @@ CREATE TABLE IF NOT EXISTS orders
 );
 
 
+CREATE TABLE IF NOT EXISTS vehicle
+(
+    vehicle_id INTEGER NOT NULL,
+    vehicle_name TEXT NOT NULL,
+    vehicle_cost float NOT NULL,
+    vehicle_sales_goal_for_current_year int NOT NULL,
+    vehicle_sales_goal_for_previous_year int NOT NULL,
+    employee_id INTEGER NOT NULL,
+    PRIMARY KEY (vehicle_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS order_line (
+  order_line_id INTEGER NOT NULL,
+  product_id INTEGER NOT NULL,
+  order_id INTEGER NOT NULL,
+  order_quantity int NOT NULL,
+  PRIMARY KEY (order_line_id),
+  FOREIGN KEY (product_id) REFERENCES vehicle(vehicle_id),
+  FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
