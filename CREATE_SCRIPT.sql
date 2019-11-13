@@ -1,21 +1,3 @@
--- script to create customer table
-create table customer
-(
-    customer_id   INTEGER     not null
-        constraint customer_pk
-            primary key autoincrement,
-    name TEXT        not null,
-    phone_number  VARCHAR(30) not null,
-    street        TEXT        not null,
-    city          TEXT        not null,
-    state         TEXT        not null,
-    zip_code      VARCHAR(20) not null,
-    customer_type TEXT         not null
-     CHECK ( customer_type = "international" or  customer_type = "domestic")
-);
-
-create unique index customer_customer_id_uindex
-    on customer (customer_id);
 
 
 
@@ -77,15 +59,40 @@ create unique index invoice_invoice_id_uindex
 
 
 
+
+
+
+
+-- script to create customer table
+create table customer
+(
+    customer_id   INTEGER     not null
+        constraint customer_pk
+            primary key autoincrement,
+    name TEXT        not null,
+    phone_number  VARCHAR(30) not null,
+    street        TEXT        not null,
+    city          TEXT        not null,
+    state         TEXT        not null,
+    zip_code      VARCHAR(20) not null,
+    customer_type TEXT         not null
+     CHECK ( customer_type = "international" or  customer_type = "domestic")
+);
+
+create unique index customer_customer_id_uindex
+    on customer (customer_id);
+
+
+
+
+
+
 -- creation of domestic customer table with inheritance *CORRECT*
 create table domestic_customer
 (
     domestic_customer_id INTEGER PRIMARY KEY,
     regional_code int not null,
---     FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
-
-    CONSTRAINT domestic_customer_id FOREIGN KEY (domestic_customer_id)
-    REFERENCES customer(customer_id)
+    FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
 );
 
 
@@ -94,16 +101,28 @@ create table domestic_customer
 
 
 -- he said this is wrong
-create table domestic_customer
-(
-    regional_code        int     not null,
-    domestic_customer_id INTEGER not null
-        constraint domestic_customer_pk
-            primary key autoincrement
-        references customer
-            on update cascade on delete cascade
-);
+-- create table domestic_customer
+-- (
+--     regional_code        int     not null,
+--     domestic_customer_id INTEGER not null
+--         constraint domestic_customer_pk
+--             primary key autoincrement
+--         references customer
+--             on update cascade on delete cascade
+-- );
+--
+-- create unique index domestic_customer_domestic_customer_id_uindex
+--     on domestic_customer (domestic_customer_id);
+--
 
-create unique index domestic_customer_domestic_customer_id_uindex
-    on domestic_customer (domestic_customer_id);
 
+
+-- works
+-- create table domestic_customer
+-- (
+--     domestic_customer_id INTEGER
+--         primary key
+--         constraint domestic_customer_id
+--             references customer,
+--     regional_code        int not null
+-- );
