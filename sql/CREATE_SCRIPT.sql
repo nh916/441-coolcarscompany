@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS employee
     name          TEXT        NOT NULL,
     phone_number  VARCHAR(30) NOT NULL,
     email         TEXT        NOT NULL,
-    date_hired    DATE DEFAULT current_timestamp NOT NULL,
+    date_hired    DATE DEFAULT CURRENT_DATE NOT NULL,
     employee_type TEXT        NOT NULL,
 --         check to be sure that the employee
     PRIMARY KEY (employee_ID),
@@ -21,7 +21,20 @@ CREATE TABLE IF NOT EXISTS employee
 -- create unique index employee_employee_ID_uindex
 --     on employee (employee_ID);
 
+CREATE TABLE IF NOT EXISTS hourly_employee(
+  hourly_employee_id INTEGER NOT NULL,
+  hourly_salary_rate float NOT NULL,
+  PRIMARY KEY (hourly_employee_id),
+  FOREIGN KEY (hourly_employee_id) REFERENCES employee(employee_ID)
+);
 
+
+CREATE TABLE IF NOT EXISTS salaried_employee(
+    salaried_employee_id INTEGER NOT NULL,
+    annual_rate float NOT NULL,
+    PRIMARY KEY (salaried_employee_id),
+    FOREIGN KEY (salaried_employee_id) REFERENCES employee(employee_ID)
+);
 
 
 
@@ -51,7 +64,7 @@ CREATE TABLE IF NOT EXISTS invoice
     invoice_id INTEGER NOT NULL,
 --         constraint invoice_pk
 --             primary key autoincrement,
-    date       DATE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    date       DATE DEFAULT CURRENT_DATE NOT NULL,
     order_id   int     NOT NULL,
     PRIMARY KEY (invoice_id)
 );
@@ -120,12 +133,6 @@ CREATE TABLE IF NOT EXISTS international_customer
 
 
 
-CREATE TABLE IF NOT EXISTS hourly_employee(
-  hourly_employee_id INTEGER NOT NULL,
-  hourly_salary_rate float NOT NULL,
-  PRIMARY KEY (hourly_employee_id),
-  FOREIGN KEY (hourly_employee_id) REFERENCES employee(employee_ID)
-);
 
 
 
@@ -133,8 +140,8 @@ CREATE TABLE IF NOT EXISTS hourly_employee(
 CREATE TABLE IF NOT EXISTS orders
 (
   order_id INTEGER NOT NULL,
-  order_placement_date DATE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-  order_shipment_date DATE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  order_placement_date DATE DEFAULT CURRENT_DATE NOT NULL,
+  order_shipment_date DATE DEFAULT CURRENT_DATE,
   customer_id INTEGER NOT NULL,
   primary key (order_id),
   FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
@@ -171,7 +178,7 @@ CREATE TABLE IF NOT EXISTS service (
     vehicle_id INTEGER NOT NULL,
     mechanic_id INTEGER NOT NULL,
     service_name TEXT NOT NULL,
-    service_date_started DATE DEFAULT current_date NOT NULL,
+    service_date_started DATE DEFAULT CURRENT_DATE NOT NULL,
     service_date_end DATE,
     PRIMARY KEY (service_id),
     FOREIGN KEY (vehicle_id) REFERENCES vehicle(vehicle_id),
