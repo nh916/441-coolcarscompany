@@ -5,20 +5,21 @@
 -- create employee table
 create table employee
 (
-    employee_ID   INTEGER     not null
-        constraint employee_pk
-            primary key autoincrement,
-    name          TEXT        not null,
-    phone_number  VARCHAR(30) not null,
-    email         TEXT        not null,
-    date_hired    DATE default current_timestamp not null,
-    employee_type TEXT        not null
+    employee_ID   INTEGER     NOT NULL,
+--         constraint employee_pk
+--             PRIMARY KEY,
+    name          TEXT        NOT NULL,
+    phone_number  VARCHAR(30) NOT NULL,
+    email         TEXT        NOT NULL,
+    date_hired    DATE DEFAULT current_timestamp NOT NULL,
+    employee_type TEXT        NOT NULL,
 --         check to be sure that the employee
+    PRIMARY KEY (employee_ID),
      CHECK ( employee_type = 'hourly' or  employee_type = 'salaried')
 );
 
-create unique index employee_employee_ID_uindex
-    on employee (employee_ID);
+-- create unique index employee_employee_ID_uindex
+--     on employee (employee_ID);
 
 
 
@@ -27,16 +28,18 @@ create unique index employee_employee_ID_uindex
 -- create mechanic table
 create table mechanic
 (
-    mechanic_ID  INTEGER     not null
-        constraint mechanic_pk
-            primary key autoincrement,
-    name         TEXT        not null,
-    phone_number VARCHAR(30) not null,
-    email        TEXT        not null
+    mechanic_ID  INTEGER     NOT NULL,
+--         constraint mechanic_pk
+--             primary key autoincrement,
+    name         TEXT        NOT NULL,
+    phone_number VARCHAR(30) NOT NULL,
+    email        TEXT        NOT NULL,
+    PRIMARY KEY (mechanic_ID)
 );
 
-create unique index mechanic_mechanic_ID_uindex
-    on mechanic (mechanic_ID);
+
+-- create unique index mechanic_mechanic_ID_uindex
+--     on mechanic (mechanic_ID);
 
 
 
@@ -45,15 +48,16 @@ create unique index mechanic_mechanic_ID_uindex
 -- create invoice table
 create table invoice
 (
-    invoice_id INTEGER not null
-        constraint invoice_pk
-            primary key autoincrement,
-    date       DATE default CURRENT_TIMESTAMP not null,
-    order_id   int     not null
+    invoice_id INTEGER NOT NULL,
+--         constraint invoice_pk
+--             primary key autoincrement,
+    date       DATE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    order_id   int     NOT NULL,
+    PRIMARY KEY (invoice_id)
 );
 
-create unique index invoice_invoice_id_uindex
-    on invoice (invoice_id);
+-- create unique index invoice_invoice_id_uindex
+--     on invoice (invoice_id);
 
 
 
@@ -65,21 +69,22 @@ create unique index invoice_invoice_id_uindex
 -- script to create customer table
 create table customer
 (
-    customer_id   INTEGER     not null
-        constraint customer_pk
-            primary key autoincrement,
-    name TEXT        not null,
-    phone_number  VARCHAR(30) not null,
-    street        TEXT        not null,
-    city          TEXT        not null,
-    state         TEXT        not null,
-    zip_code      VARCHAR(20) not null,
-    customer_type TEXT         not null
+    customer_id   INTEGER     NOT NULL,
+--         constraint customer_pk
+--             primary key autoincrement,
+    name TEXT        NOT NULL,
+    phone_number  VARCHAR(30) NOT NULL,
+    street        TEXT        NOT NULL,
+    city          TEXT        NOT NULL,
+    state         TEXT        NOT NULL,
+    zip_code      VARCHAR(20) NOT NULL,
+    customer_type TEXT         NOT NULL,
+    PRIMARY KEY (customer_id),
      CHECK ( customer_type = 'international' or  customer_type = 'domestic')
 );
 
-create unique index customer_customer_id_uindex
-    on customer (customer_id);
+-- create unique index customer_customer_id_uindex
+--     on customer (customer_id);
 
 
 
@@ -89,8 +94,9 @@ create unique index customer_customer_id_uindex
 -- creation of domestic customer table with inheritance *CORRECT*
 create table domestic_customer
 (
-    domestic_customer_id INTEGER PRIMARY KEY,
-    regional_code int not null,
+    domestic_customer_id INTEGER NOT NULL,
+    regional_code int NOT NULL,
+    PRIMARY KEY (domestic_customer_id),
     FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
 );
 
@@ -99,12 +105,14 @@ create table domestic_customer
 
 create table international_customer
 (
-    international_customer_id INTEGER not null
-		constraint international_customer_pk
-			primary key autoincrement,
+    international_customer_id INTEGER NOT NULL,
+-- 		constraint international_customer_pk
+-- 			primary key autoincrement,
     country_code int not null,
+    PRIMARY KEY (international_customer_id),
     FOREIGN KEY (international_customer_id) REFERENCES customer(customer_id)
 );
+
 -- create unique index international_customer_international_customer_id_uindex
 -- 	on international_customer (international_customer_id);
 
