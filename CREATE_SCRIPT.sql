@@ -3,7 +3,7 @@
 
 
 -- create employee table
-create table employee
+CREATE TABLE IF NOT EXISTS employee
 (
     employee_ID   INTEGER     NOT NULL,
 --         constraint employee_pk
@@ -26,7 +26,7 @@ create table employee
 
 
 -- create mechanic table
-create table mechanic
+CREATE TABLE IF NOT EXISTS mechanic
 (
     mechanic_ID  INTEGER     NOT NULL,
 --         constraint mechanic_pk
@@ -46,7 +46,7 @@ create table mechanic
 
 
 -- create invoice table
-create table invoice
+CREATE TABLE IF NOT EXISTS invoice
 (
     invoice_id INTEGER NOT NULL,
 --         constraint invoice_pk
@@ -67,7 +67,7 @@ create table invoice
 
 
 -- script to create customer table
-create table customer
+CREATE TABLE IF NOT EXISTS customer
 (
     customer_id   INTEGER     NOT NULL,
 --         constraint customer_pk
@@ -92,7 +92,7 @@ create table customer
 
 
 -- creation of domestic customer table with inheritance *CORRECT*
-create table domestic_customer
+CREATE TABLE IF NOT EXISTS domestic_customer
 (
     domestic_customer_id INTEGER NOT NULL,
     regional_code int NOT NULL,
@@ -103,7 +103,7 @@ create table domestic_customer
 
 
 
-create table international_customer
+CREATE TABLE IF NOT EXISTS international_customer
 (
     international_customer_id INTEGER NOT NULL,
 -- 		constraint international_customer_pk
@@ -123,8 +123,11 @@ create table international_customer
 
 
 
+
+
+
 -- sample
-create table international_customer
+CREATE TABLE IF NOT EXISTS international_customer
 (
 	international_customer_id INTEGER not null
 		constraint international_customer_pk
@@ -151,7 +154,7 @@ create unique index international_customer_international_customer_id_uindex
 
 
 -- samp
-create table table_name
+CREATE TABLE IF NOT EXISTS table_name
 (
 	pk INTEGER not null
 		constraint table_name_pk
@@ -166,7 +169,7 @@ create unique index table_name_pk_uindex
 
 
 -- he said this is wrong
--- create table domestic_customer
+-- CREATE TABLE IF NOT EXISTS domestic_customer
 -- (
 --     regional_code        int     not null,
 --     domestic_customer_id INTEGER not null
@@ -183,7 +186,7 @@ create unique index table_name_pk_uindex
 
 
 -- works
--- create table domestic_customer
+-- CREATE TABLE IF NOT EXISTS domestic_customer
 -- (
 --     domestic_customer_id INTEGER
 --         primary key
