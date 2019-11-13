@@ -166,7 +166,17 @@ CREATE TABLE IF NOT EXISTS order_line (
 );
 
 
-
+CREATE TABLE IF NOT EXISTS service (
+    service_id INTEGER NOT NULL,
+    vehicle_id INTEGER NOT NULL,
+    mechanic_id INTEGER NOT NULL,
+    service_name TEXT NOT NULL,
+    service_date_started DATE DEFAULT current_date NOT NULL,
+    service_date_end DATE,
+    PRIMARY KEY (service_id),
+    FOREIGN KEY (vehicle_id) REFERENCES vehicle(vehicle_id),
+    FOREIGN KEY (mechanic_id) REFERENCES mechanic(mechanic_ID)
+);
 
 
 
