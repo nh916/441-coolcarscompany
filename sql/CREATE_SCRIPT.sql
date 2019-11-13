@@ -36,6 +36,20 @@ CREATE TABLE IF NOT EXISTS salaried_employee(
     FOREIGN KEY (salaried_employee_id) REFERENCES employee(employee_ID)
 );
 
+CREATE TABLE IF NOT EXISTS employee_skill(
+    employee_id INTEGER NOT NULL,
+    skill TEXT NOT NULL,
+    PRIMARY KEY (employee_id, skill),
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_ID)
+);
+
+
+
+
+
+
+
+
 
 
 -- create mechanic table
@@ -103,7 +117,7 @@ CREATE TABLE IF NOT EXISTS customer
 
 
 
-
+-- allowed domestic to reference international
 -- creation of domestic customer table with inheritance *CORRECT*
 CREATE TABLE IF NOT EXISTS domestic_customer
 (
@@ -141,7 +155,7 @@ CREATE TABLE IF NOT EXISTS orders
 (
   order_id INTEGER NOT NULL,
   order_placement_date DATE DEFAULT CURRENT_DATE NOT NULL,
-  order_shipment_date DATE DEFAULT CURRENT_DATE,
+  order_shipment_date DATE,
   customer_id INTEGER NOT NULL,
   primary key (order_id),
   FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
