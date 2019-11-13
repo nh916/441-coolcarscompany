@@ -2,7 +2,6 @@
 
 
 
-
 -- create employee table
 create table employee
 (
@@ -95,6 +94,9 @@ create table domestic_customer
     FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
 );
 
+
+
+
 create table international_customer
 (
     international_customer_id INTEGER not null
@@ -103,8 +105,8 @@ create table international_customer
     country_code int not null,
     FOREIGN KEY (international_customer_id) REFERENCES customer(customer_id)
 );
-create unique index international_customer_international_customer_id_uindex
-	on international_customer (international_customer_id);
+-- create unique index international_customer_international_customer_id_uindex
+-- 	on international_customer (international_customer_id);
 
 
 
