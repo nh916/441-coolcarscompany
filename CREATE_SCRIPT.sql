@@ -15,7 +15,7 @@ create table employee
     date_hired    DATE default current_timestamp not null,
     employee_type TEXT        not null
 --         check to be sure that the employee
-     CHECK ( employee_type = "hourly" or  employee_type = "salaried")
+     CHECK ( employee_type = 'hourly' or  employee_type = 'salaried')
 );
 
 create unique index employee_employee_ID_uindex
@@ -76,7 +76,7 @@ create table customer
     state         TEXT        not null,
     zip_code      VARCHAR(20) not null,
     customer_type TEXT         not null
-     CHECK ( customer_type = "international" or  customer_type = "domestic")
+     CHECK ( customer_type = 'international' or  customer_type = 'domestic')
 );
 
 create unique index customer_customer_id_uindex
@@ -95,6 +95,61 @@ create table domestic_customer
     FOREIGN KEY (domestic_customer_id) REFERENCES customer(customer_id)
 );
 
+create table international_customer
+(
+    international_customer_id INTEGER not null
+		constraint international_customer_pk
+			primary key autoincrement,
+    country_code int not null,
+    FOREIGN KEY (international_customer_id) REFERENCES customer(customer_id)
+);
+create unique index international_customer_international_customer_id_uindex
+	on international_customer (international_customer_id);
+
+
+
+
+
+
+
+
+-- sample
+create table international_customer
+(
+	international_customer_id INTEGER not null
+		constraint international_customer_pk
+			primary key autoincrement,
+	country_code int not null
+);
+
+create unique index international_customer_international_customer_id_uindex
+	on international_customer (international_customer_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- samp
+create table table_name
+(
+	pk INTEGER not null
+		constraint table_name_pk
+			primary key autoincrement
+);
+
+create unique index table_name_pk_uindex
+	on table_name (pk);
 
 
 
