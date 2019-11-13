@@ -129,7 +129,16 @@ CREATE TABLE IF NOT EXISTS hourly_employee(
 
 
 
-
+-- orders bc order is reserved
+CREATE TABLE IF NOT EXISTS orders
+(
+  order_id INTEGER NOT NULL,
+  order_placement_date DATE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  order_shipment_date DATE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  customer_id INTEGER NOT NULL,
+  primary key (order_id),
+  FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
+);
 
 
 
