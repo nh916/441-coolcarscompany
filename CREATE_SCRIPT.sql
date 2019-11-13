@@ -108,13 +108,24 @@ CREATE TABLE IF NOT EXISTS international_customer
     international_customer_id INTEGER NOT NULL,
 -- 		constraint international_customer_pk
 -- 			primary key autoincrement,
-    country_code int not null,
+    country_code int NOT NULL,
     PRIMARY KEY (international_customer_id),
     FOREIGN KEY (international_customer_id) REFERENCES customer(customer_id)
 );
 
 -- create unique index international_customer_international_customer_id_uindex
 -- 	on international_customer (international_customer_id);
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS hourly_employee(
+  hourly_employee_id INTEGER NOT NULL,
+  hourly_salary_rate float NOT NULL,
+  PRIMARY KEY (hourly_employee_id),
+  FOREIGN KEY (hourly_employee_id) REFERENCES employee(employee_ID)
+);
 
 
 
@@ -129,10 +140,10 @@ CREATE TABLE IF NOT EXISTS international_customer
 -- sample
 CREATE TABLE IF NOT EXISTS international_customer
 (
-	international_customer_id INTEGER not null
+	international_customer_id INTEGER NOT NULL
 		constraint international_customer_pk
 			primary key autoincrement,
-	country_code int not null
+	country_code int NOT NULL
 );
 
 create unique index international_customer_international_customer_id_uindex
@@ -156,7 +167,7 @@ create unique index international_customer_international_customer_id_uindex
 -- samp
 CREATE TABLE IF NOT EXISTS table_name
 (
-	pk INTEGER not null
+	pk INTEGER NOT NULL
 		constraint table_name_pk
 			primary key autoincrement
 );
@@ -171,8 +182,8 @@ create unique index table_name_pk_uindex
 -- he said this is wrong
 -- CREATE TABLE IF NOT EXISTS domestic_customer
 -- (
---     regional_code        int     not null,
---     domestic_customer_id INTEGER not null
+--     regional_code        int     NOT NULL,
+--     domestic_customer_id INTEGER NOT NULL
 --         constraint domestic_customer_pk
 --             primary key autoincrement
 --         references customer
@@ -192,5 +203,5 @@ create unique index table_name_pk_uindex
 --         primary key
 --         constraint domestic_customer_id
 --             references customer,
---     regional_code        int not null
+--     regional_code        int NOT NULL
 -- );
