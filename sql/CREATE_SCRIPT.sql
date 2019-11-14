@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS part
     part_price  float   NOT NULL,
     mechanic_id INTEGER NOT NULL,
     primary key (part_id),
+    FOREIGN KEY (part_id) REFERENCES supplier (part_id),
     FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
 );
 
