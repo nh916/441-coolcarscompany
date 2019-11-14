@@ -151,3 +151,5 @@ CREATE TABLE IF NOT EXISTS service (
     FOREIGN KEY (vehicle_id) REFERENCES vehicle(vehicle_id),
     FOREIGN KEY (mechanic_id) REFERENCES mechanic(mechanic_ID)
 );
+
+
