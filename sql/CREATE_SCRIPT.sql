@@ -83,17 +83,6 @@ CREATE TABLE IF NOT EXISTS mechanic
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
 
-
--- create invoice table
-CREATE TABLE IF NOT EXISTS invoice
-(
-    invoice_id INTEGER NOT NULL,
-    date       DATE DEFAULT CURRENT_DATE NOT NULL,
-    order_id   int     NOT NULL,
-    PRIMARY KEY (invoice_id)
-);
-
-
 -- orders bc order is reserved
 CREATE TABLE IF NOT EXISTS orders
 (
