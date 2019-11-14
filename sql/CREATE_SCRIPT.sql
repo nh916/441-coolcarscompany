@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS service
     service_date_end     DATE,
     PRIMARY KEY (service_id),
     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id),
-    FOREIGN KEY (mechanic_id) REFERENCES mechanic (mechanic_ID)
+    FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
 );
 
 -- sales person table

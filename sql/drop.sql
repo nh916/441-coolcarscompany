@@ -3,4 +3,5 @@ DROP TABLE salaried_employee;
 DROP TABLE mechanic;
 DROP TABLE supplier;
 DROP TABLE invoice;
-DROP TABLE part
+DROP TABLE part;
+DROP TABLE service;
