@@ -8,4 +8,4 @@ INSERT INTO supplier(
                      zip_code,
                      part_id
                      )
-VALUES ('joe Co', 818658261, 'Pararie', 'Canoga', 'CA', '913084', 1);
+VALUES ('Doofenshmirtz Evil Inc', 818658261, 'Pararie', 'New York City', 'NY', '913084', 1);
