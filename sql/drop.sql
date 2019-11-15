@@ -1,7 +1,6 @@
-DROP TABLE hourly_employee;
-DROP TABLE salaried_employee;
 DROP TABLE mechanic;
+DROP TABLE sales_person;
+DROP TABLE employee;
 DROP TABLE supplier;
-DROP TABLE invoice;
 DROP TABLE part;
 DROP TABLE service;
