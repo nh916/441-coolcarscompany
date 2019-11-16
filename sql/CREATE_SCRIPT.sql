@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS customer
     phone_number  VARCHAR(30) NOT NULL,
     street        TEXT        NOT NULL,
     city          TEXT        NOT NULL,
--- allowing null for state in case of international
     zip_code      VARCHAR(20) NOT NULL,
     customer_type TEXT        NOT NULL,
     PRIMARY KEY (customer_id),
@@ -18,18 +17,16 @@ CREATE TABLE IF NOT EXISTS customer
 CREATE TABLE IF NOT EXISTS domestic_customer
 (
     domestic_customer_id INTEGER    NOT NULL,
---     regional_code        INT     NOT NULL,
     state                VARCHAR(2) NOT NULL,
     PRIMARY KEY (domestic_customer_id),
     FOREIGN KEY (domestic_customer_id) REFERENCES customer (customer_id)
 );
 
 
-
+-- international customer
 CREATE TABLE IF NOT EXISTS international_customer
 (
     international_customer_id INTEGER NOT NULL,
---     country_code    INT NOT NULL,
     country                   TEXT    NOT NULL,
     PRIMARY KEY (international_customer_id),
     FOREIGN KEY (international_customer_id) REFERENCES customer (customer_id)
@@ -49,7 +46,16 @@ CREATE TABLE IF NOT EXISTS employee
     CHECK ( employee_type = 'sales' or employee_type = 'mechanic')
 );
 
+-- create mechanic table sub
+CREATE TABLE IF NOT EXISTS mechanic
+(
+    employee_id INTEGER NOT NULL,
+    hourly_rate FLOAT   NOT NULL,
+    PRIMARY KEY (employee_id),
+    FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
+);
 
+-- sales person table subtype of employee
 CREATE TABLE IF NOT EXISTS sales_person
 (
     employee_id INTEGER NOT NULL,
@@ -60,22 +66,12 @@ CREATE TABLE IF NOT EXISTS sales_person
     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)
 );
 
-
+-- multi valued table
 CREATE TABLE IF NOT EXISTS employee_skill
 (
     employee_id INTEGER NOT NULL,
     skill       TEXT    NOT NULL,
     PRIMARY KEY (employee_id, skill),
-    FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
-);
-
-
--- create mechanic table
-CREATE TABLE IF NOT EXISTS mechanic
-(
-    employee_id INTEGER NOT NULL,
-    hourly_rate FLOAT   NOT NULL,
-    PRIMARY KEY (employee_id),
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
 
@@ -131,8 +127,21 @@ CREATE TABLE IF NOT EXISTS service
     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id),
     FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
 );
+
+-- supplier table
+CREATE TABLE IF NOT EXISTS supplier
+(
+    supplier_id           INTEGER     NOT NULL,
+    supplier_company_name TEXT        NOT NULL,
+    supplier_phone_number VARCHAR(30) NOT NULL,
+    street                TEXT        NOT NULL,
+    city                  TEXT        NOT NULL,
+    state                 VARCHAR(2),
+    zip_code              INT         NOT NULL,
+    PRIMARY KEY (supplier_id)
+);
+
 -- part table
--- todo fix this table and supplier
 CREATE TABLE IF NOT EXISTS part
 (
     part_id     INTEGER NOT NULL,
@@ -143,18 +152,4 @@ CREATE TABLE IF NOT EXISTS part
     primary key (part_id),
     FOREIGN KEY (supplier_id) REFERENCES supplier (supplier_id),
     FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
-);
-
--- supplier table
-CREATE TABLE IF NOT EXISTS supplier
-(
-    supplier_id           INTEGER     NOT NULL,
-    supplier_company_name TEXT        NOT NULL,
-    supplier_phone_number VARCHAR(30) NOT NULL,
-    street                TEXT        NOT NULL,
-    city                  TEXT        NOT NULL,
---     todo i think should allow for null in case international supplier
-    state                 VARCHAR(2),
-    zip_code              INT         NOT NULL,
-    PRIMARY KEY (supplier_id)
 );
