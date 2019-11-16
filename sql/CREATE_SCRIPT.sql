@@ -101,9 +101,8 @@ CREATE TABLE IF NOT EXISTS orders
 CREATE TABLE IF NOT EXISTS vehicle
 (
     vehicle_id                           INTEGER NOT NULL,
-    vehicle_name                         TEXT    NOT NULL,
---     vehicle_brand                        TEXT    NOT NULL,
---     vehicle_model                        TEXT    NOT NULL,
+    vehicle_make                         TEXT    NOT NULL,
+    vehicle_model                        TEXT    NOT NULL,
     vehicle_cost                         FLOAT   NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,
