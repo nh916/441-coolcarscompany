@@ -13,6 +13,9 @@ I didn't want to run everything one by one I just wanted to run in bulk
 
 I think each table should have at least 10 data for best results
 
+In most situations we will not be inputting primary key and pk will be inputted implicitly by
+sqlite, but in some cases we will have to if it is a FK or a subtype of the supertype
+
 If any errors within table that you think were a mistake, please report to Navid!
 
 have fun
