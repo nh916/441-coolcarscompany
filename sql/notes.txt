@@ -1,0 +1,13 @@
+it deviates away from the erd a bit because i think this is a better way and I think
+we should update some attributes within erd and relations.
+The fk and pk are all the same
+
+differences
+    customer does not hold state
+    domestic holds state
+    international holds country
+    got rid of region code and country code for both
+
+
+    vehicle does not have name instead
+        it has brand and model

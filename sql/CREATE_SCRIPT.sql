@@ -3,10 +3,7 @@ CREATE TABLE IF NOT EXISTS customer
 (
     customer_id   INTEGER     NOT NULL,
     name          TEXT        NOT NULL,
---     think about make it INT or varchar
---     varchar for more flexibility
     phone_number  VARCHAR(30) NOT NULL,
---     think about adding extension
     street        TEXT        NOT NULL,
     city          TEXT        NOT NULL,
 -- allowing null for state in case of international
