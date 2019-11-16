@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS customer
     street        TEXT        NOT NULL,
     city          TEXT        NOT NULL,
 -- allowing null for state in case of international
-    state         VARCHAR(2),
     zip_code      VARCHAR(20) NOT NULL,
     customer_type TEXT        NOT NULL,
     PRIMARY KEY (customer_id),
@@ -18,8 +17,9 @@ CREATE TABLE IF NOT EXISTS customer
 -- creation of domestic customer table with inheritance
 CREATE TABLE IF NOT EXISTS domestic_customer
 (
-    domestic_customer_id INTEGER NOT NULL,
-    regional_code        INT     NOT NULL,
+    domestic_customer_id INTEGER    NOT NULL,
+--     regional_code        INT     NOT NULL,
+    state                VARCHAR(2) NOT NULL,
     PRIMARY KEY (domestic_customer_id),
     FOREIGN KEY (domestic_customer_id) REFERENCES customer (customer_id)
 );
@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS domestic_customer
 CREATE TABLE IF NOT EXISTS international_customer
 (
     international_customer_id INTEGER NOT NULL,
-    country_code              INT     NOT NULL,
+--     country_code    INT NOT NULL,
+    country                   TEXT    NOT NULL,
     PRIMARY KEY (international_customer_id),
     FOREIGN KEY (international_customer_id) REFERENCES customer (customer_id)
 );
@@ -59,14 +60,6 @@ CREATE TABLE IF NOT EXISTS sales_person
     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)
 );
 
-
--- CREATE TABLE IF NOT EXISTS salaried_employee
--- (
---     salaried_employee_id INTEGER NOT NULL,
---     annual_rate          FLOAT   NOT NULL,
---     PRIMARY KEY (salaried_employee_id),
---     FOREIGN KEY (salaried_employee_id) REFERENCES employee (employee_ID)
--- );
 
 CREATE TABLE IF NOT EXISTS employee_skill
 (
@@ -103,6 +96,7 @@ CREATE TABLE IF NOT EXISTS vehicle
     vehicle_id                           INTEGER NOT NULL,
     vehicle_make                         TEXT    NOT NULL,
     vehicle_model                        TEXT    NOT NULL,
+    vehicle_year                         INT     NOT NULL,
     vehicle_cost                         FLOAT   NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,

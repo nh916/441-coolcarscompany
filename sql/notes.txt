@@ -11,3 +11,7 @@ differences
 
     vehicle does not have name instead
         it has brand and model
+
+
+I think sqlite might treat INTEGER and INT the same but
+I am not sure and it works so I left it as that

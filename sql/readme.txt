@@ -13,4 +13,6 @@ I didn't want to run everything one by one I just wanted to run in bulk
 
 I think each table should have at least 10 data for best results
 
+If any errors within table that you think were a mistake, please report to Navid!
+
 have fun
