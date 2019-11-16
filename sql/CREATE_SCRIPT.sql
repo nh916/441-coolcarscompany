@@ -105,6 +105,8 @@ CREATE TABLE IF NOT EXISTS vehicle
 (
     vehicle_id                           INTEGER NOT NULL,
     vehicle_name                         TEXT    NOT NULL,
+--     vehicle_brand                        TEXT    NOT NULL,
+--     vehicle_model                        TEXT    NOT NULL,
     vehicle_cost                         FLOAT   NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,
@@ -139,18 +141,6 @@ CREATE TABLE IF NOT EXISTS service
     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id),
     FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
 );
-
--- sales person table
--- CREATE TABLE IF NOT EXISTS salesPerson
--- (
---     service_id INTEGER NOT NULL,
---     commission FLOAT   NOT NULL,
---     vehicle_id INTEGER NOT NULL,
---     PRIMARY KEY (service_id),
---     FOREIGN KEY (service_id) REFERENCES employee (employee_ID),
---     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)
--- );
-
 -- part table
 -- todo fix this table and supplier
 CREATE TABLE IF NOT EXISTS part
@@ -158,9 +148,10 @@ CREATE TABLE IF NOT EXISTS part
     part_id     INTEGER NOT NULL,
     part_name   TEXT    NOT NULL,
     part_price  FLOAT   NOT NULL,
+    supplier_id INTEGER NOT NULL,
     mechanic_id INTEGER NOT NULL,
     primary key (part_id),
---     FOREIGN KEY (part_id) REFERENCES supplier (part_id),
+    FOREIGN KEY (supplier_id) REFERENCES supplier (supplier_id),
     FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
 );
 
@@ -175,7 +166,5 @@ CREATE TABLE IF NOT EXISTS supplier
 --     todo i think should allow for null in case international supplier
     state                 VARCHAR(2),
     zip_code              INT         NOT NULL,
---     part_id               INTEGER     NOT NULL,
     PRIMARY KEY (supplier_id)
---     FOREIGN KEY (part_id) REFERENCES part (part_id)
 );
