@@ -16,6 +16,11 @@ I think each table should have at least 10 data for best results
 In most situations we will not be inputting primary key and pk will be inputted implicitly by
 sqlite, but in some cases we will have to if it is a FK or a subtype of the supertype
 
+please do not add onto the current scripts that i have sent
+but make a new .sql file for each one. To make checking things later easier
+example:
+    Shonda_INSERT_vehicles.sql
+
 If any errors within table that you think were a mistake, please report to Navid!
 
 have fun
