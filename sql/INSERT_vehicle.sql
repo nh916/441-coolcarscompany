@@ -1,7 +1,7 @@
-INSERT INTO vehicle(vehicle_make,
-                    vehicle_model,
-                    vehicle_year,
-                    vehicle_cost,
+INSERT INTO vehicle(make,
+                    model,
+                    year,
+                    cost,
                     vehicle_sales_goal_for_current_year,
                     vehicle_sales_goal_for_previous_year
                     )

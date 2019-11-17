@@ -1,7 +1,7 @@
 
 INSERT INTO supplier(
-                    supplier_company_name,
-                     supplier_phone_number,
+                    company_name,
+                    phone_number,
                      street,
                      city,
                      state,
