@@ -90,13 +90,12 @@ CREATE TABLE IF NOT EXISTS orders
 CREATE TABLE IF NOT EXISTS vehicle
 (
     vehicle_id                           INTEGER NOT NULL,
-    vehicle_make                         TEXT    NOT NULL,
-    vehicle_model                        TEXT    NOT NULL,
-    vehicle_year                         INT     NOT NULL,
-    vehicle_cost                         FLOAT   NOT NULL,
+    make                                 TEXT    NOT NULL,
+    model                                TEXT    NOT NULL,
+    year                                 INT     NOT NULL,
+    cost                                 FLOAT   NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,
---     employee_id                          INTEGER NOT NULL,
     PRIMARY KEY (vehicle_id)
 --     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
