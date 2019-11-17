@@ -130,13 +130,13 @@ CREATE TABLE IF NOT EXISTS service
 -- supplier table
 CREATE TABLE IF NOT EXISTS supplier
 (
-    supplier_id           INTEGER     NOT NULL,
-    supplier_company_name TEXT        NOT NULL,
-    supplier_phone_number VARCHAR(30) NOT NULL,
-    street                TEXT        NOT NULL,
-    city                  TEXT        NOT NULL,
-    state                 VARCHAR(2),
-    zip_code              INT         NOT NULL,
+    supplier_id  INTEGER     NOT NULL,
+    company_name TEXT        NOT NULL,
+    phone_number VARCHAR(30) NOT NULL,
+    street       TEXT        NOT NULL,
+    city         TEXT        NOT NULL,
+    state        VARCHAR(2),
+    zip_code     INT         NOT NULL,
     PRIMARY KEY (supplier_id)
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS part
 (
     part_id     INTEGER NOT NULL,
     part_name   TEXT    NOT NULL,
-    part_price  FLOAT   NOT NULL,
+    price       FLOAT   NOT NULL,
     supplier_id INTEGER NOT NULL,
     mechanic_id INTEGER NOT NULL,
     primary key (part_id),
