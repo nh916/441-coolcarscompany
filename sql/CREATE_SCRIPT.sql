@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS sales_person
 (
     employee_id INTEGER NOT NULL,
     commission  FLOAT   NOT NULL,
-    vehicle_id  INTEGER NOT NULL,
+--     vehicle_id  INTEGER NOT NULL,
     PRIMARY KEY (employee_id),
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID),
-    FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)
+--     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)
 );
 
 -- multi valued table
