@@ -39,35 +39,35 @@ VALUES ('Arthur Jeffries', 8183482642, 'arthurjeffries@coolcarscompany.co', '196
 INSERT INTO employee (name, phone_number, email, date_hired, employee_type)
 VALUES ('Amy Farrah Fowler', 81897215473, 'amyfarrahfowler@coolcarscompany.co', '2008-04-04' ,'sales');
 
-    INSERT INTO sales_person (employee_id, commission, vehicle_id)
-    VALUES (6, 5634.12, 1);
+    INSERT INTO sales_person (employee_id, commission)
+    VALUES (6, 5634.12);
 
 
 INSERT INTO employee (name, phone_number, email, date_hired, employee_type)
 VALUES ('Bernadette Rostenkowski-Wolowitz', 8186826542, 'bernadetterostenkowskiwolowitz@coolcarscompany.co', '2015-06-05' ,'sales');
 
-    INSERT INTO sales_person (employee_id, commission, vehicle_id)
-    VALUES (7, 125.12, 2);
+    INSERT INTO sales_person (employee_id, commission)
+    VALUES (7, 125.12);
 
 
 
 INSERT INTO employee (name, phone_number, email, date_hired, employee_type)
 VALUES ('Stuart Bloom', 81857816784, 'stuartbloom@coolcarscompany.co', '1996-02-13' ,'sales');
 
-    INSERT INTO sales_person (employee_id, commission, vehicle_id)
-    VALUES (8, 200.12, 3);
+    INSERT INTO sales_person (employee_id, commission)
+    VALUES (8, 200.12);
 
 
 
 INSERT INTO employee (name, phone_number, email, date_hired, employee_type)
 VALUES ('Leslie Winkle', 8184942642, 'lesliewinkle@coolcarscompany.co', '2010-04-10' ,'sales');
 
-    INSERT INTO sales_person (employee_id, commission, vehicle_id)
-    VALUES (9, 352.12, 4);
+    INSERT INTO sales_person (employee_id, commission)
+    VALUES (9, 352.12);
 
 
 INSERT INTO employee (name, phone_number, email, date_hired, employee_type)
 VALUES ('Priya Koothrappali', 8184657892, 'priyakoothrappali@coolcarscompany.co', '2008-02-11' ,'sales');
 
-    INSERT INTO sales_person (employee_id, commission, vehicle_id)
-    VALUES (10, 4202.12, 5);
+    INSERT INTO sales_person (employee_id, commission)
+    VALUES (10, 4202.12);
