@@ -96,8 +96,10 @@ CREATE TABLE IF NOT EXISTS vehicle
     cost                                 FLOAT   NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,
-    PRIMARY KEY (vehicle_id)
---     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
+    sales_person_id                      INTEGER NOT NULL,
+
+    PRIMARY KEY (vehicle_id),
+    FOREIGN KEY (sales_person_id) REFERENCES sales_person (employee_id)
 );
 
 
