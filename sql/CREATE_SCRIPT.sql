@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS customer
     customer_street        TEXT        NOT NULL,
     customer_city          TEXT        NOT NULL,
     customer_zip_code      VARCHAR(20) NOT NULL,
-    customer_customer_type TEXT        NOT NULL,
+    customer_type TEXT        NOT NULL,
     PRIMARY KEY (customer_id),
     CHECK ( customer_type = 'international' or customer_type = 'domestic')
 );
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS employee
     employee_phone_number  VARCHAR(30) NOT NULL,
     employee_email         TEXT        NOT NULL,
     employee_date_hired    DATE DEFAULT CURRENT_DATE NOT NULL,
-    employee_employee_type TEXT        NOT NULL,
+    employee_type TEXT        NOT NULL,
     PRIMARY KEY (employee_ID),
     CHECK ( employee_type = 'sales' or employee_type = 'mechanic')
 );
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS employee_skill
 (
     employee_id    INTEGER NOT NULL,
     employee_skill TEXT    NOT NULL,
-    PRIMARY KEY (employee_id, skill),
+    PRIMARY KEY (employee_id, employee_skill),
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS service
     service_date_end     DATE,
     PRIMARY KEY (service_id),
     FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id),
-    FOREIGN KEY (mechanic_id) REFERENCES mechanic (employee_id)
+    FOREIGN KEY (service_mechanic_id) REFERENCES mechanic (employee_id)
 );
 
 -- supplier table
