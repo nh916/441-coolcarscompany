@@ -1,13 +1,13 @@
 -- script to create customer table
 CREATE TABLE IF NOT EXISTS customer
 (
-    customer_id            INTEGER     NOT NULL,
-    customer_name          TEXT        NOT NULL,
-    customer_phone_number  VARCHAR(30) NOT NULL,
-    customer_street        TEXT        NOT NULL,
-    customer_city          TEXT        NOT NULL,
-    customer_zip_code      VARCHAR(20) NOT NULL,
-    customer_type TEXT        NOT NULL,
+    customer_id           INTEGER     NOT NULL,
+    customer_name         TEXT        NOT NULL,
+    customer_phone_number VARCHAR(30) NOT NULL,
+    customer_street       TEXT        NOT NULL,
+    customer_city         TEXT        NOT NULL,
+    customer_zip_code     VARCHAR(20) NOT NULL,
+    customer_type         TEXT        NOT NULL,
     PRIMARY KEY (customer_id),
     CHECK ( customer_type = 'international' or customer_type = 'domestic')
 );
@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS international_customer
 -- create employee table
 CREATE TABLE IF NOT EXISTS employee
 (
-    employee_ID            INTEGER     NOT NULL,
-    employee_name          TEXT        NOT NULL,
-    employee_phone_number  VARCHAR(30) NOT NULL,
-    employee_email         TEXT        NOT NULL,
-    employee_date_hired    DATE DEFAULT CURRENT_DATE NOT NULL,
-    employee_type TEXT        NOT NULL,
+    employee_ID           INTEGER     NOT NULL,
+    employee_name         TEXT        NOT NULL,
+    employee_phone_number VARCHAR(30) NOT NULL,
+    employee_email        TEXT        NOT NULL,
+    employee_date_hired   DATE DEFAULT CURRENT_DATE NOT NULL,
+    employee_type         TEXT        NOT NULL,
     PRIMARY KEY (employee_ID),
     CHECK ( employee_type = 'sales' or employee_type = 'mechanic')
 );
@@ -92,6 +92,7 @@ CREATE TABLE IF NOT EXISTS vehicle
     vehicle_model                        TEXT    NOT NULL,
     vehicle_year                         INT     NOT NULL,
     vehicle_cost                         FLOAT   NOT NULL,
+    vehicle_quantity                     INT     NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,
     sales_person_id                      INTEGER NOT NULL,
