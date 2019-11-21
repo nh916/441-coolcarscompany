@@ -1,13 +1,13 @@
 -- script to create customer table
 CREATE TABLE IF NOT EXISTS customer
 (
-    customer_id   INTEGER     NOT NULL,
-    name          TEXT        NOT NULL,
-    phone_number  VARCHAR(30) NOT NULL,
-    street        TEXT        NOT NULL,
-    city          TEXT        NOT NULL,
-    zip_code      VARCHAR(20) NOT NULL,
-    customer_type TEXT        NOT NULL,
+    customer_id            INTEGER     NOT NULL,
+    customer_name          TEXT        NOT NULL,
+    customer_phone_number  VARCHAR(30) NOT NULL,
+    customer_street        TEXT        NOT NULL,
+    customer_city          TEXT        NOT NULL,
+    customer_zip_code      VARCHAR(20) NOT NULL,
+    customer_customer_type TEXT        NOT NULL,
     PRIMARY KEY (customer_id),
     CHECK ( customer_type = 'international' or customer_type = 'domestic')
 );
@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS customer
 -- creation of domestic customer table with inheritance
 CREATE TABLE IF NOT EXISTS domestic_customer
 (
-    domestic_customer_id INTEGER    NOT NULL,
-    state                VARCHAR(2) NOT NULL,
+    domestic_customer_id    INTEGER    NOT NULL,
+    domestic_customer_state VARCHAR(2) NOT NULL,
     PRIMARY KEY (domestic_customer_id),
     FOREIGN KEY (domestic_customer_id) REFERENCES customer (customer_id)
 );
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS domestic_customer
 -- international customer
 CREATE TABLE IF NOT EXISTS international_customer
 (
-    international_customer_id INTEGER NOT NULL,
-    country                   TEXT    NOT NULL,
+    international_customer_id      INTEGER NOT NULL,
+    international_customer_country TEXT    NOT NULL,
     PRIMARY KEY (international_customer_id),
     FOREIGN KEY (international_customer_id) REFERENCES customer (customer_id)
 );
@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS international_customer
 -- create employee table
 CREATE TABLE IF NOT EXISTS employee
 (
-    employee_ID   INTEGER     NOT NULL,
-    name          TEXT        NOT NULL,
-    phone_number  VARCHAR(30) NOT NULL,
-    email         TEXT        NOT NULL,
-    date_hired    DATE DEFAULT CURRENT_DATE NOT NULL,
-    employee_type TEXT        NOT NULL,
+    employee_ID            INTEGER     NOT NULL,
+    employee_name          TEXT        NOT NULL,
+    employee_phone_number  VARCHAR(30) NOT NULL,
+    employee_email         TEXT        NOT NULL,
+    employee_date_hired    DATE DEFAULT CURRENT_DATE NOT NULL,
+    employee_employee_type TEXT        NOT NULL,
     PRIMARY KEY (employee_ID),
     CHECK ( employee_type = 'sales' or employee_type = 'mechanic')
 );
@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS employee
 -- create mechanic table sub
 CREATE TABLE IF NOT EXISTS mechanic
 (
-    employee_id INTEGER NOT NULL,
-    hourly_rate FLOAT   NOT NULL,
+    employee_id          INTEGER NOT NULL,
+    mechanic_hourly_rate FLOAT   NOT NULL,
     PRIMARY KEY (employee_id),
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS mechanic
 -- sales person table subtype of employee
 CREATE TABLE IF NOT EXISTS sales_person
 (
-    employee_id INTEGER NOT NULL,
-    commission  FLOAT   NOT NULL,
+    employee_id             INTEGER NOT NULL,
+    sales_person_commission FLOAT   NOT NULL,
     PRIMARY KEY (employee_id),
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS sales_person
 -- multi valued table
 CREATE TABLE IF NOT EXISTS employee_skill
 (
-    employee_id INTEGER NOT NULL,
-    skill       TEXT    NOT NULL,
+    employee_id    INTEGER NOT NULL,
+    employee_skill TEXT    NOT NULL,
     PRIMARY KEY (employee_id, skill),
     FOREIGN KEY (employee_id) REFERENCES employee (employee_ID)
 );
@@ -88,10 +88,10 @@ CREATE TABLE IF NOT EXISTS orders
 CREATE TABLE IF NOT EXISTS vehicle
 (
     vehicle_id                           INTEGER NOT NULL,
-    make                                 TEXT    NOT NULL,
-    model                                TEXT    NOT NULL,
-    year                                 INT     NOT NULL,
-    cost                                 FLOAT   NOT NULL,
+    vehicle_make                         TEXT    NOT NULL,
+    vehicle_model                        TEXT    NOT NULL,
+    vehicle_year                         INT     NOT NULL,
+    vehicle_cost                         FLOAT   NOT NULL,
     vehicle_sales_goal_for_current_year  INT     NOT NULL,
     vehicle_sales_goal_for_previous_year INT     NOT NULL,
     sales_person_id                      INTEGER NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS service
 (
     service_id           INTEGER NOT NULL,
     vehicle_id           INTEGER NOT NULL,
-    mechanic_id          INTEGER NOT NULL,
+    service_mechanic_id  INTEGER NOT NULL,
     service_name         TEXT    NOT NULL,
     service_date_started DATE DEFAULT CURRENT_DATE NOT NULL,
     service_date_end     DATE,
@@ -129,13 +129,13 @@ CREATE TABLE IF NOT EXISTS service
 -- supplier table
 CREATE TABLE IF NOT EXISTS supplier
 (
-    supplier_id  INTEGER     NOT NULL,
-    company_name TEXT        NOT NULL,
-    phone_number VARCHAR(30) NOT NULL,
-    street       TEXT        NOT NULL,
-    city         TEXT        NOT NULL,
-    state        VARCHAR(2),
-    zip_code     INT         NOT NULL,
+    supplier_id           INTEGER     NOT NULL,
+    company_name          TEXT        NOT NULL,
+    supplier_phone_number VARCHAR(30) NOT NULL,
+    supplier_street       TEXT        NOT NULL,
+    supplier_city         TEXT        NOT NULL,
+    supplier_state        VARCHAR(2),
+    supplier_zip_code     INT         NOT NULL,
     PRIMARY KEY (supplier_id)
 );
 
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS part
 (
     part_id     INTEGER NOT NULL,
     part_name   TEXT    NOT NULL,
-    price       FLOAT   NOT NULL,
+    part_price  FLOAT   NOT NULL,
     supplier_id INTEGER NOT NULL,
     mechanic_id INTEGER NOT NULL,
     primary key (part_id),
