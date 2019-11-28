@@ -3,9 +3,9 @@ SELECT vehicle.vehicle_make, vehicle.vehicle_model, vehicle.vehicle_year, vehicl
 FROM vehicle
 WHERE vehicle_cost >
       (
-          SELECT AVG(vehicle_cost) FROM vehicle
-
-          )
+          SELECT AVG(vehicle_cost)
+          FROM vehicle
+      )
 
 
 -- which vehicles are less than average cost of vehicles
@@ -13,9 +13,9 @@ SELECT vehicle.vehicle_make, vehicle.vehicle_model, vehicle.vehicle_year, vehicl
 FROM vehicle
 WHERE vehicle_cost <
       (
-          SELECT AVG(vehicle_cost) FROM vehicle
-
-          )
+          SELECT AVG(vehicle_cost)
+          FROM vehicle
+      )
 
 
 
@@ -25,6 +25,6 @@ SELECT COUNT(*)
 FROM vehicle
 WHERE vehicle_cost <
       (
-          SELECT AVG(vehicle_cost) FROM vehicle
-
-          )
+          SELECT AVG(vehicle_cost)
+          FROM vehicle
+      )
