@@ -20,8 +20,7 @@ WHERE vehicle_cost <
 
 
 -- how many cars are priced less than the average price
-SELECT COUNT(*)
-
+SELECT COUNT(*) AS cars_priced_less_than_average
 FROM vehicle
 WHERE vehicle_cost <
       (
