@@ -1,4 +1,0 @@
-maybe allow for extensions within phone numbers and make phone numbers int for
-better data handling
-
-international supplier? or all domestic?
